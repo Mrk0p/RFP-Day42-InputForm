@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Personal details</title>
+    <link rel="stylesheet" href="InputForm.css">
+</head>
+<body>
+    <form>
+        <header class="HeaderContainer"><h1>User Details Form</h1></header>
+        <div>
+            <label for="text">Name :</label>
+            <input type="text" id="text" name="text">
+            <error-output class="text-error" for="text"></error-output>
+        </div><br>
+        <div>
+            <button>Submit</button>
+        </div><br>
+    </form>
+    <script>
+        const text = document.querySelector('#text');
+        const textError = document.querySelector('.text-error');
+        text.addEventListener('input',function(){
+            let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+            if(nameRegex.test(text.value))
+                textError.textContent = "";
+                else textError.textContent = "Incorrect Name";
+        });
+        const email = document.querySelector('#email');
+            const emailError = document.querySelector('.email-error');
+            email.addEventListener('input',function(){
+                let emailRegex = RegExp('^[A-Za-z]{3,}[.]?[a-z0-9]*@([a-z]+)[.]?[a-z]+[.]?[a-z]*$');
+                if(emailRegex.test(email.value))
+                    emailError.textContent = "";
+                else emailError.textContent = "Incorrect Email";    
+            });
+    </script>
+</body>
+</html>
